@@ -1,13 +1,19 @@
 package com.vb.openlibraries.easyrestclient.demoserver.servlets;
 
+import helpers.JsonHelper;
+
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GetDemoServlet extends HttpServlet{
+import com.googlecode.objectify.ObjectifyService;
+
+import entities.DemoObject;
+
+public class GetDemoServlet extends AbstractServlet {
 
 	/**
 	 * 
@@ -18,9 +24,9 @@ public class GetDemoServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		String json = "salut";
+		List<DemoObject> list = ObjectifyService.ofy().load().type(DemoObject.class).list();
 		resp.setContentType("application/json");
-		resp.getWriter().println(req.getParameter("object"));
+		resp.getWriter().println(JsonHelper.getInstence().toJson(list));
 	}
 
 

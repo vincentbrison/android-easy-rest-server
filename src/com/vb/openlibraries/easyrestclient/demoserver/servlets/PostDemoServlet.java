@@ -5,16 +5,14 @@ import helpers.JsonHelper;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
 import entities.DemoObject;
 
-public class PostDemoServlet extends HttpServlet {
+public class PostDemoServlet extends AbstractServlet {
 	
 	/**
 	 * 
@@ -26,9 +24,7 @@ public class PostDemoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		DemoObject objectToStore = JsonHelper.getInstence().fromJson(req.getParameter("object"), DemoObject.class);
 		if (objectToStore != null) {
-			ObjectifyService.register(DemoObject.class);
-			Objectify ofy = ObjectifyService.ofy();
-			ofy.save().entity(objectToStore).now();
+			ObjectifyService.ofy().save().entity(objectToStore).now();
 			resp.setStatus(200);
 		} else {
 			resp.setStatus(400);
