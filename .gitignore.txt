@@ -1,0 +1,3 @@
+war/WEB-INF/appengine-generated
+doc/
+war/WEB-INF/classes/
