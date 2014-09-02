@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-core-2.4.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/jackson-annotations-2.4.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/objectify-5.0.3.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/guava-18.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
